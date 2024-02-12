@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Carousel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 40vw;
+            overflow: hidden;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .next-arrow,
+        .prev-arrow {
+            position: absolute;
+            bottom: 20px;
+            cursor: pointer;
+            font-size: 30px;
+            color: #333;
+        }
+
+        .next-arrow {
+            right: 20px;
+        }
+
+        .prev-arrow {
+            left: 20px;
+        }
+
+        .button {
+            bottom: 20px;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            color: #fff; /* White text color */
+            background-color: #ff76b6;
+            margin: 10px;
+            margin-bottom: 100px;
+            margin-top: 50px;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #d8196c;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="carousel-container">
+        <div class="slide" style="display: block;">
+            <h3>just ran the numbers, and they say you're a cutie</h3>
+            <img src="https://images.vexels.com/media/users/3/255320/isolated/preview/ee6179aa62b4176c86544be36b00ddae-cute-calculator-color-stroke.png" alt="Slide 1" style="max-width:40%; margin: 50px;">
+        </div>
+        <div class="slide">
+            <h3>when it comes to my heart, you've got the most equity</h3>
+            <img src="./assets/images/heart.png" alt="Slide 2" style="max-width:35%; margin: 50px;">
+        </div>
+        <div class="slide">
+            <h3>this Q1, i'm ACCOUNTING on you to be mine</h3>
+            <img src="https://cdn-icons-png.flaticon.com/512/1451/1451282.png" alt="Slide 3" style="max-width:30%; margin: 60px;">
+        </div>
+        <div class="slide">
+            <h3>will you be my valentine?</h3>
+            <button class="button">Yes</button>
+            <button class="button">Yes</button>
+        </div>
+        <div class="prev-arrow" onclick="prevSlide()"><span>&#8592;</span></div>
+        <div class="next-arrow" onclick="nextSlide()"><span>&#8594;</span></div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach((slide, i) => {
+                slide.style.display = i === index ? 'block' : 'none';
+            });
+
+            // Update arrow visibility based on current slide
+            document.querySelector('.prev-arrow').style.display = index === 0 ? 'none' : 'block';
+            document.querySelector('.next-arrow').style.display = index === 3 ? 'none' : 'block';
+        }
+
+        function nextSlide() {
+            if (currentSlide < 3) {
+                currentSlide++;
+                showSlide(currentSlide);
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                showSlide(currentSlide);
+            }
+        }
+    </script>
+
+</body>
+
+</html>
